@@ -6,4 +6,10 @@ const animaCanos = () => {
     } else {
         hidden.classList.add("view");
     }
+    const nomeBotao = document.querySelector(".btn2");
+    if (view) {
+        nomeBotao.innerHTML = "Os tipos de canos...";
+    } else {
+        nomeBotao.innerHTML = "Ocultar";
+    }
 }
