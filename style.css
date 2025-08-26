@@ -26,6 +26,7 @@ body {
 }
 
 header {
+  width: 100vw;
   background-color: rgba(30, 41, 59, 0.7);
   color: #fff;
   padding: 1rem 2rem;
@@ -107,6 +108,10 @@ header a:hover {
 }
 .buttons a {
   color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .buttons:hover {
   transform: translateY(-4px);
@@ -114,8 +119,7 @@ header a:hover {
 }
 
 .section {
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 1rem;
   margin: auto;
 }
 
@@ -125,6 +129,7 @@ header a:hover {
   justify-content: center;
   align-items: center;
   margin-bottom: 5rem;
+  max-width: 1024px;
 }
 #sobre h2 {
   width: 100%;
@@ -143,35 +148,50 @@ header a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 60%;
 }
 .text-sobre p {
   margin: 1.5rem;
 }
-#sobre img {
+#sobre .img-sobre {
+  display: flex;
+  justify-content: center;
   width: 40%;
-  border-radius: 7rem 5rem 9rem 6rem;
-  filter: drop-shadow(2px 2px 50px #ded40c);
+}
+.img-sobre img {
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 50% 90% 50% 90% / 90% 50% 90% 50%;
+  filter: drop-shadow(2px 2px 50px #908a1a);
+  transition: all 0.3s ease;
+}
+.img-sobre img:hover {
+  border-radius: 90% 50% 90% 50% / 50% 90% 50% 90%;
 }
 .box-sobre {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 #servicos {
+  width: max-content;
   background-color: var(--segunda-cor);
   border-radius: 2rem;
-  margin-bottom: 5rem;
-  color: #fff;
-}
-#servicos h2 {
-  position: relative;
-  left: 2rem;
-}
-.servicos {
   display: flex;
   justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 5rem;
+}
+
+.servicos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 .servicos h3 {
   margin: 1.5rem 0;
@@ -203,7 +223,7 @@ li .card-img {
   width: 100%;
 }
 li img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -214,12 +234,23 @@ li img {
   height: auto;
   border: none;
 }
+.botao:hover {
+  border: none;
+}
 .btn-canos {
   padding: 0.125rem;
   border-radius: 0.5rem;
-  background-color: #fbbf24;
+  background-color: var(--botao-normal);
   color: #000;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-canos:hover {
+  transform: translateY(-3px);
+  background-color: var(--botao-click);
+}
+.btn2 {
+  display: none;
 }
 .card-canos.view {
   display: grid;
@@ -228,24 +259,23 @@ li img {
   display: none;
 }
 
-
-
 #contato {
   background-image: url(imagens/fundo4.avif);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left center;
   width: 100vw;
-  height: 85vh;
+  height: 95vh;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0 min(5em, 8%);
 }
 .text-contato {
+  color: #fff;
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 55%;
   height: auto;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
@@ -258,8 +288,127 @@ li img {
 
 footer {
   text-align: center;
-  height: 1.5rem;
-  background: #fef9c3;
+  background-color: #fef9c3;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .section {
+    max-width: 800px;
+  }
+  .box-sobre {
+    flex-direction: column-reverse;
+  }
+  ul {
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+  }
+  #contato {
+    justify-content: center;
+    padding: 0 min(5em, 2%);
+  }
+  .text-contato {
+    margin-right: 0.5rem;
+    width: 60%;
+  }
+}
+@media screen and (max-width: 767px) {
+  p {
+    font-size: 14px;
+  }
+  .section {
+    max-width: 360px;
+  }
+  .box-sobre {
+    flex-direction: column-reverse;
+  }
+  .text-sobre {
+    width: 100%;
+  }
+  .img-sobre {
+    width: 200px;
+  }
+  .img-sobre img {
+    max-width: 200px;
+  }
+  .servicos {
+    width: 70vw;
+  }
+  ul {
+  list-style: none;
+  width: 250px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  scroll-snap-type:x mandatory;
+  padding: 0.5rem;
+  gap: 1rem;
+  background-color: rgba(1, 28, 64, 1);
+  border-radius: 1.5rem;
+}
+li {
+  width: 200px;
+  height: 300px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #000;
+  border-radius: 1.5rem;
+  padding: 1rem 2rem;
+  scroll-margin-left: 1.5rem;
+}
+li:hover {
+  border: 1px solid #fff;
+}
+li .card-img {
+  width: 180px;
+}
+li img {
+  max-width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.card-canos h3 {
+  max-width: 100%;
+}
+.card-canos.view {
+  display: flex;
+  flex-direction: column;
+}
+ul::-webkit-scrollbar {
+  height: 10px;
+  background-color: transparent;
+}
+ul::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 50%;
+}
+ul::-webkit-scrollbar-thumb{
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+.btn-canos, .botao {
+  display: none;
+}
+.btn2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  margin-top: 1rem;
+}
+#contato {
+  justify-content: center;
+  padding: 0;
+}
+.text-contato {
+  width: 90%;
+  padding: 5px;
+}
 }
 
 /*
